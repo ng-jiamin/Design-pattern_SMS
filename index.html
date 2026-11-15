@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Local Student Management System demonstration">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">S</span><div><strong>StudentHub</strong><small>Management System</small></div></div>
+      <div class="nav-caption">WORKSPACE</div>
+      <nav aria-label="Main navigation">
+        <a href="#dashboard" class="nav-link active" aria-current="page"><span>▦</span> Dashboard</a>
+        <a href="#students" class="nav-link"><span>▤</span> Students</a>
+      </nav>
+      <div class="sidebar-foot"><span class="status-dot"></span> Local demonstration<br><small>Data stored in student.txt</small></div>
+    </aside>
+    <main class="content" id="dashboard">
+      <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> Students</div><div class="user-chip">Admin demo</div></header>
+      <div class="page-content">
+        <section class="heading-row">
+          <div><div class="eyebrow">STUDENT RECORDS</div><h1>Student Management</h1><p>Add, find, and manage student records in one place.</p></div>
+          <button class="button primary" type="button" id="addStudentBtn"><span class="plus">+</span> Add Student</button>
+        </section>
+        <section class="stats" aria-label="Student statistics">
+          <div class="stat-card"><span class="stat-label">Total Students</span><strong id="totalStudents">—</strong><span class="stat-note">Registered students</span></div>
+          <div class="stat-card"><span class="stat-label">Business</span><strong id="businessStudents">—</strong><span class="stat-note">Business programme</span></div>
+          <div class="stat-card"><span class="stat-label">Computing</span><strong id="computingStudents">—</strong><span class="stat-note">Computing programme</span></div>
+          <div class="stat-card"><span class="stat-label">Average CGPA</span><strong id="averageCGPA">—</strong><span class="stat-note">Across all students</span></div>
+        </section>
+        <section class="student-panel" id="students">
+          <div class="panel-heading"><div><h2>All Students</h2><p>Search by ID, name or programme.</p></div><span class="record-count" id="recordCount">0 records</span></div>
+          <form id="searchForm" class="search-controls">
+            <label class="search-input-wrap"><span class="search-symbol">⌕</span><input id="searchInput" type="text" placeholder="Search by Student ID" aria-label="Search students"></label>
+            <label class="sr-only" for="searchBy">Search by</label>
+            <select id="searchBy" aria-label="Search type"><option value="id">Student ID</option><option value="name">Name</option><option value="programme">Programme</option></select>
+            <button class="button primary search-btn" type="submit">Search</button>
+            <button class="button secondary" type="button" id="resetSearch">Reset</button>
+          </form>
+          <p id="message" class="message" role="status" hidden></p>
+          <div class="table-scroll"><table><thead><tr><th>Student ID</th><th>Student Name</th><th>Programme</th><th>Date of Birth</th><th>CGPA</th><th>Actions</th></tr></thead><tbody id="studentRows"></tbody></table></div>
+          <div class="empty-state" id="emptyState" hidden>No student records match your search.</div>
+        </section>
+        <div class="footer-note">Software Design Patterns assignment · Factory Method · Facade · Strategy · Layered Architecture</div>
+      </div>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="studentModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+      <div class="modal-header"><div><h2 id="modalHeading">Add Student</h2><p>Complete all fields to save a record.</p></div><button type="button" class="icon-button" id="closeModal" aria-label="Close dialog">×</button></div>
+      <form id="studentForm">
+        <div class="form-grid">
+          <label>Student ID<input id="studentId" name="student_id" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 30587" required></label>
+          <label>Full Name<input id="studentName" name="name" type="text" minlength="6" placeholder="e.g. Ng Jia Min" required></label>
+          <label>Programme<select id="studentProgramme" name="programme" required><option value="Business">Business</option><option value="Computing">Computing</option></select></label>
+          <label>Date of Birth<input id="studentDob" name="dob" type="date" min="2000-01-01" max="2024-12-31" required></label>
+          <label>CGPA<input id="studentCgpa" name="cgpa" type="number" min="0" max="4" step="0.01" placeholder="e.g. 3.56" required></label>
+        </div>
+        <p id="formError" class="form-error" role="alert" hidden></p>
+        <div class="modal-actions"><button type="button" class="button secondary" id="cancelModal">Cancel</button><button type="submit" class="button primary" id="saveStudent">Save Student</button></div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
