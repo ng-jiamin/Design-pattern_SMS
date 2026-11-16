@@ -6,7 +6,7 @@ from models import BusinessStudent, ComputingStudent, Student
 class StudentCreator(ABC):
     @abstractmethod
     def create_student(self, student_id, name, programme, dob, cgpa) -> Student:
-        """Factory method implemented by concrete creators."""
+        """Factory method implemented by concrete creators"""
 
 
 class BusinessStudentCreator(StudentCreator):
@@ -20,7 +20,7 @@ class ComputingStudentCreator(StudentCreator):
 
 
 class StudentFactory:
-    """Selects a creator; StudentService need not use concrete student classes."""
+    """Selects a creator; StudentService need not use concrete student classes"""
 
     def __init__(self):
         self.creators = {
