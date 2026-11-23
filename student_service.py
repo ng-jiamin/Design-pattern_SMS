@@ -49,7 +49,7 @@ class StudentService:
                                   data.get("cgpa", ""))
         if self._find(values[0]):
             raise DuplicateStudentID("That Student ID already exists.")
-        student = self.factory.create_student(*values)  # Factory Method
+        student = self.factory.create_student(*values) 
         updated = self.students + [student]
         self.repository.save_students(updated)
         self.students = updated
