@@ -1,1 +1,4 @@
-30987,fghjkl,Business,2000-12-12,4.0
+12345,Carmen Ng,Computing,2006-12-01,3.5
+29313,Jia Min,Business,2010-06-08,3.8
+93289,Ashley,Computing,2009-02-28,4.0
+19091,erica ng,Business,2009-02-28,3.59
