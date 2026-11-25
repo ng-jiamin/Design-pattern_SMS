@@ -21,12 +21,12 @@ class TestSearchStudents(unittest.TestCase):
 
     def setUp(self):
         self.students = [
-            ComputingStudent('12345', 'Alice Tan', 'Computing',
-                             date(2003, 5, 10), 3.5),
-            BusinessStudent('23456', 'Bob Smith', 'Business',
-                            date(2002, 8, 20), 3.2),
-            ComputingStudent('34567', 'Alicia Wong', 'Computing',
-                             date(2004, 1, 15), 3.8),
+            ComputingStudent('12345', 'Carmen Ng', 'Computing',
+                             date(2006, 12, 1), 3.5),
+            BusinessStudent('29313', 'Jia Min Ng', 'Business',
+                            date(2010, 6, 8), 3.8),
+            ComputingStudent('93289', 'Ashley', 'Computing',
+                             date(2009, 2, 28), 4.0),
         ]
 
         repository = Mock()
@@ -36,10 +36,10 @@ class TestSearchStudents(unittest.TestCase):
     def test_search_by_id(self):
         result = self.service.search_students('id', '12345')
         self.assertEqual(len(result), 1)
-        self.assertEqual(result[0]['name'], 'Alice Tan')
+        self.assertEqual(result[0]['name'], 'Carmen Ng')
 
     def test_search_by_name_case_insensitive(self):
-        result = self.service.search_students('name', 'ALICE')
+        result = self.service.search_students('name', 'CARMEN')
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]['student_id'], '12345')
 
@@ -48,7 +48,7 @@ class TestSearchStudents(unittest.TestCase):
         self.assertEqual(len(result), 2)
         self.assertEqual(
             {student['student_id'] for student in result},
-            {'12345', '34567'}
+            {'12345', '93289'}
         )
 
     def test_search_with_no_match(self):
@@ -72,10 +72,10 @@ class TestSearchStudents(unittest.TestCase):
         self.assertEqual(result[0]['student_id'], '12345')
 
     def test_search_by_partial_name(self):
-        result = self.service.search_students('name', 'ali')
+        result = self.service.search_students('name', 'Ng')
         self.assertEqual(
             {student['student_id'] for student in result},
-            {'12345', '34567'}
+            {'12345', '29313'}
         )
 
 

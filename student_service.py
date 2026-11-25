@@ -12,6 +12,9 @@ class StudentNotFound(LookupError):
 class DuplicateStudentID(ValidationError):
     pass
 
+# Code smell addressed: Large Class / God Class.
+# Business logic is separated from UI and file storage
+# to improve maintainability and separation of concerns.
 
 class StudentService:
     def __init__(self, repository: StudentRepository, factory: StudentFactory):

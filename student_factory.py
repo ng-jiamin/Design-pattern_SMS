@@ -2,6 +2,9 @@
 from abc import ABC, abstractmethod
 from models import BusinessStudent, ComputingStudent, Student
 
+# Code smell addressed: Duplicated object creation.
+# Factory Method centralizes student object creation
+# and reduces coupling to concrete student classes.
 
 class StudentCreator(ABC):
     @abstractmethod

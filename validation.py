@@ -6,6 +6,9 @@ import math
 class ValidationError(ValueError):
     """Invalid student details supplied by the user."""
 
+# Code smell addressed: Duplicated validation logic.
+# Shared validation rules ensure consistent checking
+# during student creation and updating.
 
 def validate_student(student_id, name, programme, dob, cgpa):
     """Validate and normalize values, following the original add-student rules."""

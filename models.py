@@ -2,6 +2,9 @@
 from abc import ABC, abstractmethod
 from datetime import date
 
+# Code smell addressed: Duplicated serialization logic.
+# Shared student attributes and serialization methods
+# are centralized in the base Student class.
 
 class Student(ABC):
     """Common student details shared by both programmes."""

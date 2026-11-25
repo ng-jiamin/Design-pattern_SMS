@@ -5,6 +5,9 @@ from pathlib import Path
 from student_factory import StudentFactory
 from validation import validate_student
 
+# Code smell addressed: Mixed responsibilities.
+# File persistence is separated from business logic
+# to improve maintainability and testability.
 
 class StudentRepository:
     def __init__(self, filename: str | Path, factory: StudentFactory):

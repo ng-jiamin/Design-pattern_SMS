@@ -2,6 +2,9 @@
 from abc import ABC, abstractmethod
 from models import Student
 
+# Refactoring improvement: Conditional complexity.
+# Separate search strategies allow interchangeable
+# algorithms without expanding a single search method.
 
 class SearchStrategy(ABC):
     @abstractmethod

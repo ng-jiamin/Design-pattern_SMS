@@ -1,6 +1,9 @@
 """Structural design pattern: Facade (single entry point for the website)."""
 from student_service import StudentService
 
+# Code smell addressed: Tight coupling.
+# Facade provides a simplified interface between
+# the presentation layer and business logic.
 
 class StudentManagementFacade:
     def __init__(self, service: StudentService):
